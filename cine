@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF=8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cine Amancaes</title>
+        <style>
+            *{
+                margin:0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            body{
+                background-color:rgb(0, 0, 0);
+                color: #333;/*color tecto suave*/
+                line-height: 1.6;/*espacio line*/
+            }
+            header{
+                background-color: #130018;
+                color: #fff;/*texto*/
+                padding: 1rem 2rem;/*espacio interior*/
+                display: flex;
+                justify-content: center;
+                border-bottom: 1px solid #fff;
+            }
+            .header-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                max-width: 600px;
+                margin: auto;
+            }
+            header img{
+                width: 150px;
+                height: 150px;
+            }
+           /* Animación para links del encabezado */
+nav a {
+  color: #ffffff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background-color: rgb(142, 193, 255);
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: rgb(142, 193, 255);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Botones comprar entrada */
+.btn-comprar {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #004aad;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-comprar:hover {
+  background-color: #1e042b;
+  transform: scale(1.05);
+  box-shadow: 0 8px 15px rgba(42, 4, 43, 0.6);
+}
+            section{
+                padding: 3rem 2rem; /*espacio entre cada seccion*/
+                max-width: 900px;
+                margin: auto;/*centrado horizontal*/
+            }
+            h1,h2{
+                color:rgb(0, 0, 0);
+            }
+            .about{
+                padding: 40px 20px;
+                width: 100%;
+                max-width: 280px;
+                border-radius: 10px;
+                background-color: #ffffff;
+                box-shadow: 0 10px 20px rgba(9, 9, 9, 0.1);
+                transition: all 0.3s ease;
+                text-align: left; 
+            }
+              .pricing__cards {
+         display: flex;
+          gap: 30px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        .card {
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 280px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-align: left; 
+            }
+            .card a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #004aad;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .card h3 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 20px;}
+    .card:hover {
+        transform: translateY(-5px);
+        background-color: #042b04;
+        color: white;
+        transform: scale(1.05);
+    }
+
+
+
+            .img{
+                border-radius: 50%;
+                width:150px;
+                height: 150px;
+                object-fit:cover;
+                margin-bottom: 1rem;
+            }
+            .projects{
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+                gap: 1.5rem;
+            }
+            .project-card{
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                overflow: hidden;
+                padding: 1rem;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            .project-card img{
+                width: 150%;
+                height: auto;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+            footer{
+                background-color: black;
+                color: white;
+                text-align: left;
+                padding: 3rem 2rem;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;  
+                justify-content: center; 
+                height: 140px; 
+                text-align: left;
+                border-top: 3px solid #fff;
+            }
+
+            main section{
+                display: none;
+                padding: 3rem 2rem;
+                max-width: 900px;
+                margin: auto;
+                color: #fff;
+            }
+            main section:target{
+                display: block;
+            }
+            main:not(:has(:target))section#inicio{
+                display: block;
+            }
+              /* Formulario encuesta */
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        button[type="submit"] {
+            background-color: #150022;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        button[type="submit"]:hover {
+            background-color: #c500fb;
+        }
+           
+        </style>
+    </head>
+    <body>
+ <header>
+      <div class="header-container">
+    <img src="Recursos/Logo cine .png" alt="Logo" class="logo">
+  <nav>
+    <a href="#pelicula">Películas</a>
+    <a href="#producto">Trabajos</a>
+    <a href="#encuesta">Encuesta</a>
+  </nav>
+</header>
+<main>
+    <section id="pelicula">
+      <h1>Películas Disponibles</h1>
+      <div class="peliculas-container" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        
+        <!-- Película 1 -->
+        <div class="pelicula-card" style="background: #2d002e; border-radius: 10px; padding: 15px; width: 280px; text-align:center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+          <img src="Recursos/formula 1.webp" alt="Película 1" style="width: 100%; border-radius: 10px;">
+          <h3>Formula 1</h3>
+          <p>Apodado "el más grande que nunca fue", Sonny Hayes (Brad Pitt) fue el fenómeno más prometedor de la FÓRMULA 1 de los años 90 hasta que sufrió un espectacular accidente. Treinta años después, es un piloto nómade a sueldo cuando es abordado por su ex compañero de equipo Ruben Cervantes (Javier Bardem), dueño de un equipo de F1 en problemas que está al borde del colapso.</p>
+          <button class="btn-comprar">
+            Comprar entrada
+          </button>
+        </div>
+  
+        <!-- Película 2 -->
+        <div class="pelicula-card" style="background:#2d002e; border-radius: 10px; padding: 15px; width: 280px; text-align:center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+          <img src="Recursos/megan.jpg" alt="Película 2" style="width: 100%; border-radius: 10px;">
+          <h3>M3gan</h3>
+          <p>La muñeca asesina que cautivó a la cultura pop en 2023 ha vuelto. Y esta vez no está sola. Dos años después de que M3GAN, se saliera de control y se embarcara en una matanza, su creadora, Gemma, no tendrá otra opción más que resucitar a su infame creación para acabar con Amelia, un arma de grado militar construida por un contratista de defensa que robó la tecnología subyacente de M3GAN.</p>
+          <button class="btn-comprar">
+            Comprar entrada
+          </button>
+        </div>
+  
+        <!-- Película 3 -->
+        <div class="pelicula-card" style="background:#2d002e; border-radius: 10px; padding: 15px; width: 280px; text-align:center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+          <img src="Recursos/stich.jpeg" alt="Película 3" style="width: 100%; border-radius: 10px;">
+          <h3>Stich</h3>
+          <p>Remake de acción real del clásico animado de Disney "Lilo y Stitch".</p>
+          <button class="btn-comprar">
+            Comprar entrada
+          </button>
+        </div>
+  
+        <!-- Película 4 -->
+        <div class="pelicula-card" style="background: #2d002e; border-radius: 10px; padding: 15px; width: 280px; text-align:center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+          <img src="Recursos/superman.jpg" alt="Película 4" style="width: 100%; border-radius: 10px;">
+          <h3>Superman</h3>
+          <p>En su estilo característico, James Gunn asume el papel del superhéroe original en el nuevo universo de DC, con una singular mezcla de acción épica, humor y corazón, ofreciendo un Superman impulsado por la compasión y una creencia inherente en la bondad de la humanidad.</p>
+          <button class="btn-comprar">
+            Comprar entrada
+          </button>
+        </div>
+  
+        <!-- Película 5 -->
+        <div class="pelicula-card" style="background:#2d002e; border-radius: 10px; padding: 15px; width: 280px; text-align:center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+          <img src="Recursos/dragon.jpg" alt="Película 5" style="width: 100%; border-radius: 10px;">
+          <h3>Cómo entrenar a tu dragón</h3>
+          <p>En la isla de Berk, donde los vikingos y los dragones han sido enemigos por generaciones, Hipo se distingue. El ingenioso, pero olvidado, hijo del Jefe Estoico el Vasto, Hipo desafía siglos de tradición cuando hace amistad con Chimuelo, el temido dragón Furia Nocturna. Su vínculo inusual revela la verdadera naturaleza de los dragones, retando las fundaciones de la sociedad vikinga.</p>
+          <button class="btn-comprar">
+            Comprar entrada
+          </button>
+        </div>
+  
+        <!-- Película 6 -->
+        <div class="pelicula-card" style="background:#2d002e; border-radius: 10px; padding: 15px; width: 280px; text-align:center; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+          <img src="Recursos/elio.jpeg" alt="Película 6" style="width: 100%; border-radius: 10px;">
+          <h3>Elio</h3>
+          <p>Elio, un niño con una gran obsesión por los alienígenas, descubre la respuesta a esa pregunta cuando es transportado al Comuniverso, un paraíso interplanetario que alberga vida inteligente de galaxias muy lejanas.</p>
+          <button class="btn-comprar">
+            Comprar entrada
+          </button>
+        </div>
+  
+      </div>
+    </section>
+  <!-- Sección "Encuesta" -->
+    <section id="encuesta">
+    <h1>🎬🌟Encuesta de Satisfacción</h1>
+    <form action="enviar_correo.php" method="POST">
+      <div class="form-group">
+        <label for="nombre">Nombre completo:</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo">
+      </div>
+      <div class="form-group">
+        <label for="correo">Correo electrónico:</label>
+        <input type="email" id="correo" name="correo" required placeholder="tuemail@dominio.com">
+      </div>
+
+      <div class="form-group">
+        <label>1. ¿Qué te pareció la calidad de la proyección?</label>
+        <select name="pregunta1" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="Excelente">Excelente</option>
+          <option value="Buena">Buena</option>
+          <option value="Regular">Regular</option>
+          <option value="Mala">Mala</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>2. ¿Cómo calificarías la atención del personal?</label>
+        <select name="pregunta2" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="Excelente">Excelente</option>
+          <option value="Buena">Buena</option>
+          <option value="Regular">Regular</option>
+          <option value="Mala">Mala</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>3. ¿Qué opinas del ambiente general del cine?</label>
+        <select name="pregunta3" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="Muy agradable">Muy agradable</option>
+          <option value="Agradable">Agradable</option>
+          <option value="Neutral">Neutral</option>
+          <option value="Desagradable">Desagradable</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>4. ¿Cómo calificarías la limpieza del lugar?</label>
+        <select name="pregunta4" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="Muy limpia">Muy limpia</option>
+          <option value="Limpia">Limpia</option>
+          <option value="Regular">Regular</option>
+          <option value="Sucio">Sucio</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>5. ¿Recomendarías nuestro cine a tus amigos y familiares?</label>
+        <select name="pregunta5" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="Sí">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>6. ¿Qué tan accesible encontraste la ubicación?</label>
+        <select name="pregunta6" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="Muy accesible">Muy accesible</option>
+          <option value="Accesible">Accesible</option>
+          <option value="Poco accesible">Poco accesible</option>
+          <option value="Inaccesible">Inaccesible</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>7. Comentarios adicionales:</label>
+        <textarea name="comentarios" placeholder="Escribe aquí tus comentarios..."></textarea>
+      </div>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+    </form>
+  </section>
+</main>
+
+<!--Footer-->
+<footer style="background-color: #111; color: white;">
+  <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 150px;">
+    
+    <!-- Columna 1 -->
+    <div style="flex: 1; min-width: 200px;">
+      &copy; Cine Amancaes<br>
+      Av. Alfredo Mendiola 6232, Los Olivos 15314
+    </div>
+
+    <!-- Columna 2 -->
+    <div style="flex: 1; min-width: 200px;">
+      <ul style="list-style: none; padding: 0;">
+        <li>Acosta Morillo, María José</li>
+        <li>Machado Bolaños, André Sebastián</li>
+        <li>Pizarro Llanto, Alex Joseph</li>
+        <li>Quiroz Jimenez, Camila Anais</li>
+      </ul>
+    </div>
+
+    <!-- Columna 3 -->
+    <div style="flex: 1; min-width: 200px; gap: 50px;">
+      Síguenos en nuestras redes sociales<br>
+    <a href="https://www.facebook.com/cineplanet" target="_blank">
+      <img src="Recursos/face.png" alt="Facebook" style="width: 10px;">
+    </a>
+    <a href="https://x.com/cineplanet" target="_blank">
+      <img src="Recursos/x.png" alt="Twitter" style="width: 24px;">
+    </a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
